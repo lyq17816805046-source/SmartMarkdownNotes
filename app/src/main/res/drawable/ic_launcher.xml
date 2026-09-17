@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Background -->
+    <path
+        android:fillColor="#6200EE"
+        android:pathData="M0,0h108v108h-108z" />
+    <!-- Notebook body -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,24h48c2.2,0 4,1.8 4,4v52c0,2.2 -1.8,4 -4,4h-48c-2.2,0 -4,-1.8 -4,-4v-52c0,-2.2 1.8,-4 4,-4z" />
+    <!-- Spiral binding -->
+    <path
+        android:fillColor="#6200EE"
+        android:pathData="M32,32h4v4h-4zM32,42h4v4h-4zM32,52h4v4h-4zM32,62h4v4h-4zM32,72h4v4h-4z" />
+    <!-- Text lines -->
+    <path
+        android:fillColor="#BB86FC"
+        android:pathData="M44,36h28v3h-28zM44,46h28v3h-28zM44,56h28v3h-28zM44,66h20v3h-20z" />
+</vector>
