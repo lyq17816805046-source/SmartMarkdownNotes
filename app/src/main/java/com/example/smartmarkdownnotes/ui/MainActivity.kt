@@ -43,7 +43,10 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         noteAdapter = NoteAdapter(
             onItemClick = { note -> openNoteEdit(note) },
-            onItemLongClick = { note, view -> showNoteOptions(note, view) }
+            onItemLongClick = { note, view -> 
+                showNoteOptions(note, view)
+                true
+            }
         )
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
