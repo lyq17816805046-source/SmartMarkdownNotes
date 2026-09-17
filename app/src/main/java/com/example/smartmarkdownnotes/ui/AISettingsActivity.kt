@@ -65,7 +65,7 @@ class AISettingsActivity : AppCompatActivity() {
             return
         }
         
-        val settings = com.example.smartmarkdownnotes.util.AISettings(
+        val settings = AISettings(
             apiKey = apiKey,
             apiUrl = apiUrl,
             model = model
