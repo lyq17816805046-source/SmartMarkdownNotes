@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">智能Markdown笔记</string>
+    <string name="new_note">新建笔记</string>
+    <string name="save">保存</string>
+    <string name="delete">删除</string>
+    <string name="title">标题</string>
+    <string name="content">内容</string>
+    <string name="search_notes">搜索笔记</string>
+    <string name="ai_continue">AI续写</string>
+    <string name="ai_polish">AI润色</string>
+    <string name="ai_summarize">AI总结</string>
+    <string name="api_key_hint">OpenAI API Key</string>
+    <string name="settings">设置</string>
+</resources>
