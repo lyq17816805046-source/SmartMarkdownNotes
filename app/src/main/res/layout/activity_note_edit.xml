@@ -11,13 +11,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:indeterminate="true"
         android:visibility="gone" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:hint="标题"
-        android:padding="16dp"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -31,14 +33,15 @@
 
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="16dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_margin="16dp"
         android:hint="内容 (支持Markdown)"
-        android:padding="16dp"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -48,42 +51,50 @@
             android:inputType="textMultiLine"
             android:gravity="top|start"
             android:scrollbars="vertical"
-            android:fontFamily="monospace" />
+            android:lineSpacingMultiplier="1.2" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="16dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp"
+        android:padding="16dp"
         android:gravity="center">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnContinue"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="续写"
+            android:layout_weight="1"
             android:layout_marginEnd="8dp"
+            android:text="续写"
+            app:icon="@drawable/ic_launcher"
             style="@style/Widget.Material3.Button.OutlinedButton" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnPolish"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="4dp"
             android:text="润色"
-            android:layout_marginEnd="8dp"
+            app:icon="@drawable/ic_launcher"
             style="@style/Widget.Material3.Button.OutlinedButton" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSummarize"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
             android:text="总结"
+            app:icon="@drawable/ic_launcher"
             style="@style/Widget.Material3.Button.OutlinedButton" />
 
     </LinearLayout>

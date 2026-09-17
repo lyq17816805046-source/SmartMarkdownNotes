@@ -6,6 +6,7 @@ import com.example.smartmarkdownnotes.data.db.NoteDatabase
 import com.example.smartmarkdownnotes.data.model.Note
 import com.example.smartmarkdownnotes.data.repository.AIRepository
 import com.example.smartmarkdownnotes.data.repository.NoteRepository
+import com.example.smartmarkdownnotes.util.AISettings
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -61,26 +62,30 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
         callback(note)
     }
     
+    // AI Settings Functions
+    fun getAISettings(): AISettings = aiRepository.getSettings()
+    
+    fun saveAISettings(settings: AISettings) = aiRepository.saveSettings(settings)
+    
+    fun hasAISettings(): Boolean {
+        val settings = aiRepository.getSettings()
+        return settings.apiKey.isNotBlank() && settings.apiUrl.isNotBlank()
+    }
+    
     // AI Functions
-    fun getApiKey(): String? = aiRepository.getApiKey()
-    
-    fun saveApiKey(apiKey: String) = aiRepository.saveApiKey(apiKey)
-    
-    fun hasApiKey(): Boolean = !aiRepository.getApiKey().isNullOrBlank()
-    
     fun continueWriting(text: String) = viewModelScope.launch {
         _aiLoading.value = true
         _aiError.value = null
         _aiResult.value = null
         
-        val apiKey = aiRepository.getApiKey()
-        if (apiKey.isNullOrBlank()) {
+        val settings = aiRepository.getSettings()
+        if (settings.apiKey.isBlank() || settings.apiUrl.isBlank()) {
             _aiLoading.value = false
-            _aiError.value = "请先设置OpenAI API Key"
+            _aiError.value = "请先设置AI服务参数"
             return@launch
         }
         
-        val result = aiRepository.continueWriting(text, apiKey)
+        val result = aiRepository.continueWriting(text, settings)
         _aiLoading.value = false
         
         result.onSuccess { content ->
@@ -95,14 +100,14 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
         _aiError.value = null
         _aiResult.value = null
         
-        val apiKey = aiRepository.getApiKey()
-        if (apiKey.isNullOrBlank()) {
+        val settings = aiRepository.getSettings()
+        if (settings.apiKey.isBlank() || settings.apiUrl.isBlank()) {
             _aiLoading.value = false
-            _aiError.value = "请先设置OpenAI API Key"
+            _aiError.value = "请先设置AI服务参数"
             return@launch
         }
         
-        val result = aiRepository.polishText(text, apiKey)
+        val result = aiRepository.polishText(text, settings)
         _aiLoading.value = false
         
         result.onSuccess { content ->
@@ -117,14 +122,14 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
         _aiError.value = null
         _aiResult.value = null
         
-        val apiKey = aiRepository.getApiKey()
-        if (apiKey.isNullOrBlank()) {
+        val settings = aiRepository.getSettings()
+        if (settings.apiKey.isBlank() || settings.apiUrl.isBlank()) {
             _aiLoading.value = false
-            _aiError.value = "请先设置OpenAI API Key"
+            _aiError.value = "请先设置AI服务参数"
             return@launch
         }
         
-        val result = aiRepository.summarizeText(text, apiKey)
+        val result = aiRepository.summarizeText(text, settings)
         _aiLoading.value = false
         
         result.onSuccess { content ->
